@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [UserLoginController::class, 'login']);
+Route::post('/registration', [UserLoginController::class, 'registration']);
+Route::post('/verify-mail', [UserLoginController::class, 'verifyMail']);
 
 Route::middleware('auth:sanctum')->group(function (Router $router) {
     $router->get('/profile', [UserLoginController::class, 'profile']);
