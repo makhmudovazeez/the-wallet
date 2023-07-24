@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\User\LoginController as UserLoginController;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', [UserLoginController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function (Router $router) {
+    $router->get('/profile', [UserLoginController::class, 'profile']);
 });
